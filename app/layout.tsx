@@ -6,7 +6,7 @@ import "./app.css";
 // Importing AuthenticatorWrapper
 import AuthenticatorWrapper from "./AuthenticatorWrapper";
 import "@aws-amplify/ui-react/styles.css";
-import { use } from "react";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
