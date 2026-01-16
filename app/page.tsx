@@ -48,8 +48,8 @@ export default function App() {
           <><li
             onClick={() => deleteTodo(todo.id)}
             key={todo.id}>{todo.content}
-          </li>
-          <button onClick={signOut}>Sign out</button></>
+          </li>          
+          </>
         ))}
       </ul>
       <div>
@@ -59,6 +59,7 @@ export default function App() {
           Review next steps of this tutorial.
         </a>
       </div>
+      <button onClick={signOut}>Sign out</button>
     </main>
   );
 }
