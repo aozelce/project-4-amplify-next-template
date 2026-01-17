@@ -7,8 +7,9 @@ export default async function LocationFinderServer() {
     
     return (
     <>
-      <h1>Hello from {locationInfo?.City} - Server Component</h1>
-    
+        <p>Server Component</p>         
+      <h1>Hello from {locationInfo?.City}</h1>
+            
     </>
   );
 }
