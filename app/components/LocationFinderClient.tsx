@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 
 export default function LocationFinderServer() {
-    const [locationInfo, setLocationInfo] = useState({City: 'N/A}'});
+    const [locationInfo, setLocationInfo] = useState({City: 'Loading..'});
 
     async function getLocationInfo() {
-        const response = await fetch("https://apip.cc/api-json/vk.com");
+        const response = await fetch("https://apip.cc/json");
         console.log(response);
         const locationData = await response.json();
         setLocationInfo(locationData);
