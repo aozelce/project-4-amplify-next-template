@@ -1,10 +1,10 @@
 "use client";
 
 import { useAuthenticator } from "@aws-amplify/ui-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { generateClient } from "aws-amplify/data";
 import type { Schema } from "@/amplify/data/resource";
-import "./../app/app.css";
+import "./app.css";
 import { Amplify } from "aws-amplify";
 import outputs from "@/amplify_outputs.json";
 import "@aws-amplify/ui-react/styles.css";
@@ -18,15 +18,15 @@ export default function App() {
   const { signOut } = useAuthenticator();
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
 
-  function listTodos() {
+  const listTodos = useCallback(() => {
     client.models.Todo.observeQuery().subscribe({
       next: (data) => setTodos([...data.items]),
     });
-  }
+  }, []);
 
   useEffect(() => {
     listTodos();
-  }, []);
+  }, [listTodos]);
 
   function createTodo() {
     client.models.Todo.create({
@@ -36,7 +36,7 @@ export default function App() {
 
   // Adding delete functionality    
   function deleteTodo(id: string) {
-    client.models.Todo.delete({ id })
+    client.models.Todo.delete({ id });
   }
 
   return (
@@ -45,11 +45,12 @@ export default function App() {
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
-          <><li
+          <li
             onClick={() => deleteTodo(todo.id)}
-            key={todo.id}>{todo.content}
-          </li>          
-          </>
+            key={todo.id}
+          >
+            {todo.content}
+          </li>
         ))}
       </ul>
       <div>
