@@ -1,10 +1,9 @@
-"use client";
+// "use client";
 // import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./app.css";
 
 // Importing AuthenticatorWrapper
-import AuthenticatorWrapper from "./AuthenticatorWrapper";
 import "@aws-amplify/ui-react/styles.css";
 
 
@@ -23,9 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AuthenticatorWrapper>
-          {children}
-        </AuthenticatorWrapper>
+          {children}      
       </body>
     </html>
   );
