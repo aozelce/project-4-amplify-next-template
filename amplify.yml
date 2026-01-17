@@ -4,11 +4,13 @@ backend:
     build:
       commands:
         - rm -rf node_modules
-        - rm -rf .npm
-        - npm ci --include=optional
+        - npm ci --include=optional --cache .npm --prefer-offline
         - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
 frontend:
   phases:
+    preBuild:
+      commands:
+        - npm ci --include=optional --cache .npm --prefer-offline
     build:
       commands:
         - npm run build
@@ -19,3 +21,4 @@ frontend:
   cache:
     paths:
       - .next/cache/**/*
+      - .npm/**/*
