@@ -19,8 +19,7 @@ export default function LocationFinderServer() {
     
     return (
     <>
-      {/* Had to use country name instead of city name due to API limitations in my location. */}
-      <h1>Hello from {locationInfo?.CountryName}- Client Component</h1>
+      <h1>Hello from {locationInfo.City}- Client Component</h1>
     
     </>
   );
