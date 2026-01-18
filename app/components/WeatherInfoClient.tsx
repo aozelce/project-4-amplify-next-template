@@ -13,7 +13,7 @@ export default function WeatherInfoClient() {
                 const lon = location.Longitude;
 
                 return fetch(
-                    `http://www.7timer.info/bin/api.pl?lat=${lat}&lon=${lon}&product=astro&output=json&unit=metric`
+                    `https://www.7timer.info/bin/api.pl?lat=${lat}&lon=${lon}&product=astro&output=json&unit=metric`
                 );
             })
             .then(res => res.json())
